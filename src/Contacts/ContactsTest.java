@@ -19,6 +19,10 @@ import java.util.List;
 
 public class ContactsTest {
     public static void main(String[] args) throws IOException {
+
+
+
+        ///// ======= MAIN BUILD ========= ///////
         Scanner input = new Scanner(System.in);
         Contact person = new Contact();
 
@@ -31,11 +35,33 @@ public class ContactsTest {
         System.out.println("Give me a Phone Number: ");
         person.setPhoneNum(input.nextLong());
 
-//        System.out.println(person.getName());
 
+
+
+
+
+
+        //// ======== Add to text file ========== ///////
+//        System.out.println(person.getName());
+        String newPerson = person.getName();
         List<String> contactList = Arrays.asList(person.getName());
         Path filePath = Paths.get("src/Contacts", "contact.txt");
         Files.write(filePath, contactList);
+
+
+
+
+
+
+
+        //// ======== Search by name ========== ///////
+        System.out.println("Hey, who you lookin' for?");
+        String searchName = input.nextLine();
+//        System.out.println(newPerson.indexOf(searchName));
+
+
+
+
 
 
         System.out.println("\n1. View contacts.\n" +
