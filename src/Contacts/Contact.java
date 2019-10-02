@@ -28,7 +28,7 @@ public class Contact {
     }
 
     public String getName() {
-        return fName + " " + lName;
+        return fName + " " + lName + " " + phoneNum;
     }
 
     public long getPhoneNum() {
