@@ -17,7 +17,6 @@ public class ContactsTest {
 
 
     public static void main(String[] args) throws IOException {
-        System.out.println("Phone Contact List:\n");
         createContactsList(loadContacts());
         System.out.println("Welcome to the Contacts Manager Application.\n");
         Scanner input = new Scanner(System.in);
@@ -38,7 +37,7 @@ public class ContactsTest {
                     deletePerson();
                     break;
                 case 5:
-                    updateOnExit();
+//                    updateOnExit();
                     willContinue = false;
                     System.out.println("Thank you, your contact list has been updated!");
                     break;
@@ -55,11 +54,8 @@ public class ContactsTest {
             Contact c = null;
             try {
                 String firstName = line.substring(0, line.indexOf(" "));
-                System.out.println(firstName);
                 String lastName = line.substring(line.indexOf(" "), line.lastIndexOf(" "));
-                System.out.println(lastName);
                 String phoneNumber = line.substring(line.lastIndexOf(" "));
-                System.out.println(phoneNumber);
                 c = new Contact(firstName, lastName, phoneNumber);
             } catch(Exception e) {
                 
@@ -67,7 +63,6 @@ public class ContactsTest {
             contacts.add(c);
         }
     }
-
 
     // ===== Load contact ==== ///
     public static List<String> loadContacts(){
@@ -81,7 +76,6 @@ public class ContactsTest {
     }
 
 
-
     //// ==== Display Menu ==== /////
     public static void displayMenu() {
         System.out.println("1. View contacts.\n" +
@@ -92,25 +86,13 @@ public class ContactsTest {
                 "Enter an option (1, 2, 3, 4 or 5): \n");
     }
 
-
-
     //// ===== View contact list ==== ////
     public static void displayContacts() {
-
-        List<String> contactList = new ArrayList<>();
-        for(Contact contact : contacts) {
+        System.out.println("Name | Phone Number");
+        System.out.println("----------------");
+        for(Contact contact: contacts){
             System.out.println(contact.getName());
         }
-    }
-
-
-
-
-
-
-
-    public static void test(){
-        contacts.get(0);
 
     }
 
@@ -139,8 +121,13 @@ public class ContactsTest {
         Scanner input = new Scanner(System.in);
         System.out.println("Hey, who you lookin' for?");
         String searchName = input.nextLine();
-    }
+        for(Contact contact : contacts) {
+            if (contact.getfName().equalsIgnoreCase(searchName)) {
+                System.out.println(contact.getName());
+            }
 
+        }
+    }
 
     //// ==== Delete Contacts ===== //////
     public static void deletePerson() {
@@ -148,20 +135,22 @@ public class ContactsTest {
         Scanner input = new Scanner(System.in);
         System.out.println("Who do you want to remove?");
 
-    }
+//        if(contacts.fName().toLowerCase().contains(search.toLowerCase())){
+//            System.out.println(contacts.getFname() + " " + contacts.getLname() + " | " + contacts.getPhone() + "\n");
+//
+//    }
 
-    //// ======== Update text file ( upon exit )  ========== ///////
+        //// ======== Update text file ( upon exit )  ========== ///////
 
     public static void updateOnExit() throws IOException {
-        Contact person = new Contact();
-//        System.out.println(person.getName());
-//        String newPerson = person.getName();
-//        List<String> contactList = Arrays.asList(person.getName());
-        Path filePath = Paths.get("src/Contacts", "contact.txt");
-//        Files.write(filePath, contactList, StandardOpenOption.APPEND);
+//            Path Files.write(Path filepath, List<String> lines[, StandardOpenOption option])
+        String newPerson = contacts.getName();
+        Path filePath = Paths.get("src","Contacts", "contact.txt");
+        Path Files.write(filePath, contacts, StandardOpenOption.APPEND);
+
     }
 
-
+    }
 }
 
 ///// NOTES //////
