@@ -28,7 +28,11 @@ public class Contact {
     }
 
     public String getName() {
-        return fName + " " + lName + " " + phoneNum;
+        return fName + lName + " |" + phoneNum;
+    }
+
+    public String getfName() {
+        return fName;
     }
 
     public String getPhoneNum() {
