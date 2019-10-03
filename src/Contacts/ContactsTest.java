@@ -17,7 +17,8 @@ public class ContactsTest {
 
 
     public static void main(String[] args) throws IOException {
-
+        System.out.println("Phone Contact List:\n");
+        createContactsList(loadContacts());
         System.out.println("Welcome to the Contacts Manager Application.\n");
         Scanner input = new Scanner(System.in);
         boolean willContinue = true;
@@ -25,7 +26,7 @@ public class ContactsTest {
             displayMenu();
             switch (input.nextInt()) {
                 case 1:
-                    System.out.println(getContactList());
+                    displayContacts();
                     break;
                 case 2:
                     addContact();
@@ -50,22 +51,34 @@ public class ContactsTest {
     public static void createContactsList(List<String> lines) {
         for(String line : lines){
             /// parse through the string line to pull out the fName, lName, and number to pass to contact constructor
-
-            Contact c = new Contact();
+//            "someFirstName someLastName phonenumber";
+            Contact c = null;
+            try {
+                String firstName = line.substring(0, line.indexOf(" "));
+                System.out.println(firstName);
+                String lastName = line.substring(line.indexOf(" "), line.lastIndexOf(" "));
+                System.out.println(lastName);
+                String phoneNumber = line.substring(line.lastIndexOf(" "));
+                System.out.println(phoneNumber);
+                c = new Contact(firstName, lastName, phoneNumber);
+            } catch(Exception e) {
+                
+            }
             contacts.add(c);
         }
     }
 
 
-    /// ===== Load contact ==== ///
-//    public static void loadContacts(){
-//        Path p = Paths.get("src/Contacts", "contact.txt");
-//        try {
-//            contacts = Files.readAllLines(p);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    // ===== Load contact ==== ///
+    public static List<String> loadContacts(){
+        Path p = Paths.get("src","Contacts", "contact.txt");
+        try {
+            return Files.readAllLines(p);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
 
@@ -82,11 +95,12 @@ public class ContactsTest {
 
 
     //// ===== View contact list ==== ////
-    public static List<String> getContactList() {
+    public static void displayContacts() {
 
         List<String> contactList = new ArrayList<>();
-
-        return contactList;
+        for(Contact contact : contacts) {
+            System.out.println(contact.getName());
+        }
     }
 
 
@@ -114,7 +128,7 @@ public class ContactsTest {
         person.setLName(input.nextLine());
 
         System.out.println("Give me a Phone Number: ");
-        person.setPhoneNum(input.nextLong());
+        person.setPhoneNum(input.nextLine());
 }
 
 

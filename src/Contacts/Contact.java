@@ -3,13 +3,13 @@ package Contacts;
 public class Contact {
     private String fName;
     private String lName;
-    private long phoneNum;
+    private String phoneNum;
 
     public Contact() {
 
     };
 
-    public Contact (String fName, String lName, long phoneNum) {
+    public Contact (String fName, String lName, String phoneNum) {
         this.fName = fName;
         this.lName = lName;
         this.phoneNum = phoneNum;
@@ -23,7 +23,7 @@ public class Contact {
         this.lName = newLName;
     }
 
-    public void setPhoneNum(long phoneNum) {
+    public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
 
@@ -31,7 +31,7 @@ public class Contact {
         return fName + " " + lName + " " + phoneNum;
     }
 
-    public long getPhoneNum() {
+    public String getPhoneNum() {
         return phoneNum;
     }
 
