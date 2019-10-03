@@ -20,7 +20,7 @@ import java.util.List;
 public class ContactsTest {
 
     public static void main(String[] args) throws IOException {
-
+        Scanner input = new Scanner(System.in);
         System.out.println("Welcome to the Contacts Manager Application.\n");
         System.out.println("\n1. View contacts.\n" +
                 "2. Add a new contact.\n" +
@@ -28,6 +28,25 @@ public class ContactsTest {
                 "4. Delete an existing contact.\n" +
                 "5. Exit.\n" +
                 "Enter an option (1, 2, 3, 4 or 5):");
+    switch(input.nextInt()) {
+        case 1:
+            getContactList();
+            break;
+        case 2:
+            addContact();
+            break;
+        case 3:
+            searchPerson();
+            break;
+        case 4:
+            deletePerson();
+            break;
+        case 5:
+//            updateOnExit();
+            break;
+    }
+
+
 //        searchPerson();
 //        deletePerson();
 //        System.out.println(getContactList());
@@ -72,7 +91,7 @@ public class ContactsTest {
 
 
         ///// ==== Search contacts === ////
-    public static void searchPerson () {
+    public static void searchPerson() {
         //// ======== Search by name ========== ///////
 //        System.out.println(newPerson.indexOf(searchName));
         Scanner input = new Scanner(System.in);
