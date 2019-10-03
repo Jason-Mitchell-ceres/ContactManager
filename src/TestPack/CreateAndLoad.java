@@ -15,23 +15,24 @@ import java.util.List;
 
 public class CreateAndLoad {
 
-    List<String> lines = Files.readAllLines(Paths.get("data", "groceries.txt"));
-    List<String> newList = new ArrayList<>();
+    public static void create() throws IOException {
+        List<String> lines = Files.readAllLines(Paths.get("data", "groceries.txt"));
+        List<String> newList = new ArrayList<>();
 
-for (String line : lines) {
-        if (line.equals("milk")) {
-            newList.add("cream");
-            continue;
+        for (String line : lines) {
+            if (line.equals("milk")) {
+                newList.add("cream");
+                continue;
+            }
+            newList.add(line);
         }
-        newList.add(line);
+        Files.write(Paths.get("data", "groceries.txt"), newList);
     }
 
-Files.write(Paths.get("data", "groceries.txt"), newList);
 
-
-
-
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        create();
     }
+
+
 }
