@@ -19,6 +19,8 @@ import java.util.List;
 
 public class ContactsTest {
 
+    public static List<Contact> contacts = new ArrayList<>();
+
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to the Contacts Manager Application.\n");
