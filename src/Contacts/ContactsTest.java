@@ -90,6 +90,9 @@ public class ContactsTest {
         Scanner input = new Scanner(System.in);
         System.out.println("Who do you want to remove?");
 
+        }
+
+
 //        List<String> contactList = null;
 //        try {
 //            contactList = Files.readAllLines(Paths.get("src/Contacts", "contact.txt"));
@@ -114,8 +117,6 @@ public class ContactsTest {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-
-
 
 
     }
